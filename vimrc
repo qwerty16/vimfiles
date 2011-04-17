@@ -3,13 +3,16 @@
 set spell spelllang=en
 set nospell
 
-" Set the colour scheme
-colorscheme desertEx
+" Always have line numbers
+set number
 
 "Set up bundles
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
+" Set the colour scheme
+colorscheme desertEx
 
 " Set filetype stuff to on
 filetype on
@@ -17,7 +20,7 @@ filetype plugin on
 filetype indent on
 
 " Check minibufexpl is sourced
-so ~/.vim/bundle/minibufexpl/plugin/minibufexpl.vim
+so ~/.vim/bundle/minibuf/plugin/minibufexpl.vim
 
 " Switch on syntax highlighting.
 syntax on
