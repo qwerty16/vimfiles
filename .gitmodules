@@ -1,25 +1,25 @@
-[submodule "external/TaskList.vim"]
-    path = external/TaskList.vim
+[submodule "bundle/TaskList.vim"]
+    path = bundle/TaskList.vim
     url = git://github.com/vim-scripts/TaskList.vim.git
 
-[submodule "external/AutoClose"]
-    path = external/AutoClose
+[submodule "bundle/AutoClose"]
+    path = bundle/AutoClose
     url = git://github.com/vim-scripts/AutoClose--Alves.git
 
-[submodule "external/vim-cute-python"]
-    path = external/vim-cute-python
+[submodule "bundle/vim-cute-python"]
+    path = bundle/vim-cute-python
     url = git://github.com/ehamberg/vim-cute-python.git
 
-[submodule "external/supertab"]
-    path = external/supertab
+[submodule "bundle/supertab"]
+    path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
 
-[submodule "external/spf13-snipmate.vim"]
-    path = external/spf13-snipmate.vim
+[submodule "bundle/snipmate"]
+    path = bundle/snipmate
     url = git://github.com/spf13/snipmate.vim.git
 
-[submodule "external/snipmate-snippets/snippets"]
-    path = external/snipmate-snippets/snippets
+[submodule "bundle/snipmate/snippets"]
+    path = bundle/snipmate-snippets/snippets
     url = git://github.com/JNRowe/snipmate-snippets.git
 
 [submodule "bundle/colorscheme"]
@@ -46,18 +46,18 @@
 	path = bundle/desertEx
 	url = git://github.com/vim-scripts/desertEx.git
 
-[submodule "external/nerdcommenter"]
-path = external/nerdcommenter
+[submodule "bundle/nerdcommenter"]
+path = bundle/nerdcommenter
 url = git://github.com/scrooloose/nerdcommenter.git
 
 [submodule "pathogen"]
     path = pathogen
     url = git://github.com/tpope/vim-pathogen.git
 
-[submodule "external/gundo.vim"]
-    path = external/gundo.vim
+[submodule "bundle/gundo"]
+    path = bundle/gundo
     url = git://github.com/sjl/gundo.vim.git
 
-[submodule "external/Haskell-Conceal"]
-    path = external/Haskell-Conceal
+[submodule "bundle/Haskell-Conceal"]
+    path = bundle/Haskell-Conceal
     url = git://github.com/vim-scripts/Haskell-Conceal.git
