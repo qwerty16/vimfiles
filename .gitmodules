@@ -14,14 +14,6 @@
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
 
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git://github.com/spf13/snipmate.vim.git
-
-[submodule "bundle/snipmate/snippets"]
-    path = bundle/snipmate-snippets/snippets
-    url = git://github.com/JNRowe/snipmate-snippets.git
-
 [submodule "bundle/colorscheme"]
 	path = bundle/colorscheme
 	url = git://github.com/flazz/vim-colorschemes.git

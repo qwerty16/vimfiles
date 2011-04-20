@@ -19,8 +19,17 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Check minibufexpl is sourced
-so ~/.vim/bundle/minibuf/plugin/minibufexpl.vim
+" Set minibuf location
+" help....... TODO
+
+" Set supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
+
+" Gundo toggle mapping
+map <F5> :GundoToggle<CR>
 
 " Switch on syntax highlighting.
 syntax on
@@ -98,9 +107,3 @@ set expandtab
 
 " Set folding to indent style
 set foldmethod=indent
-
-" Set supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
