@@ -19,8 +19,8 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Set minibuf location
-" help....... TODO
+" Set listchars
+set listchars=tab:▸\ ,eol:¬
 
 " Set supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -107,3 +107,6 @@ set expandtab
 
 " Set folding to indent style
 set foldmethod=indent
+
+" If in plaintext dont expand tabs and show invisible chars
+autocmd BufNew *.txt setlocal list expandtab
