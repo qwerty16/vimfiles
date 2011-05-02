@@ -49,15 +49,28 @@
 [submodule "bundle/Haskell-Conceal"]
 	path = bundle/Haskell-Conceal
 	url = git://github.com/vim-scripts/Haskell-Conceal.git
+
 [submodule "bundle/TaskList"]
 	path = bundle/TaskList
 	url = git://github.com/vim-scripts/TaskList.vim.git
+
 [submodule "bundle/cute-python"]
 	path = bundle/cute-python
 	url = git://github.com/ehamberg/vim-cute-python.git
+
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+
+[submodule "bundle/colorscheme"]
+    path = bundle/colorscheme
+    url = No
+
+[submodule "bundle/snipmate"]
+    path = bundle/snipmate
+    url = No
+
