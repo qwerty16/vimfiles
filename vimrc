@@ -33,7 +33,7 @@ set ch=2
 " [%p%%] percent through file in lines
 " %c column number
 " %h shows help flag
-set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
+set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h\ %{fugitive#statusline()}
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2

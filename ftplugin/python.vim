@@ -14,7 +14,7 @@ set number
 set textwidth=72
 
 " Makes sure folds work nicely
-set foldmethod=indent
+set foldmethod=marker
 
 set complete+=k~/.vim/syntax/python.vim isk+=.,(
 
