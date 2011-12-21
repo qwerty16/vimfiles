@@ -26,3 +26,4 @@ imap ` #
 
 " Sets pydoc location
 let g:pydoc_cmd = "/usr/bin/pydoc"
+compiler nose
