@@ -1,5 +1,5 @@
 " Set the colour scheme
-colorscheme desertEx
+colorscheme default
 
 " =====================================================
 " Folding
@@ -33,9 +33,10 @@ set ch=2
 " [%p%%] percent through file in lines
 " %c column number
 " %h shows help flag
-set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h\ %{fugitive#statusline()}
+set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 
-" tell VIM to always put a status line in, even if there is only one window
+" tell VIM to always put a status line in, even if 
+" there is only one window
 set laststatus=2
 " }}}
 
@@ -60,8 +61,9 @@ nmap <SwipeRight> :bn<CR>
 " set the search scan to wrap lines
 set wrapscan
 
-" set the search scan so that it ignores case when the search is all lower
-" case but recognizes uppercase if it's specified
+" set the search scan so that it ignores case when the
+" search is all lower case but recognizes uppercase if
+" it's specified
 set ignorecase
 set smartcase
 
@@ -96,6 +98,11 @@ map ,nt :NERDTreeToggle<CR>
 
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
+
+" Latex-suite settings
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 0
 
 " }}}
 
@@ -133,7 +140,8 @@ map j gj
 set tabstop=4
 set shiftwidth=4
 
-" Allow backspacing over indent, eol, and the start of insert
+" Allow backspacing over indent, eol, and the start of
+" insert
 set backspace=2
 " }}}
 
