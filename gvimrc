@@ -35,7 +35,8 @@ set ch=2
 " %h shows help flag
 set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 
-" tell VIM to always put a status line in, even if there is only one window
+" tell VIM to always put a status line in, even if 
+" there is only one window
 set laststatus=2
 " }}}
 
@@ -51,6 +52,7 @@ endif
 " Map swipe left and right to go through buffers
 nmap <SwipeLeft> :bN<CR>
 nmap <SwipeRight> :bn<CR>
+
 " }}}
 
 " =====================================================
@@ -60,8 +62,9 @@ nmap <SwipeRight> :bn<CR>
 " set the search scan to wrap lines
 set wrapscan
 
-" set the search scan so that it ignores case when the search is all lower
-" case but recognizes uppercase if it's specified
+" set the search scan so that it ignores case when the
+" search is all lower case but recognizes uppercase if
+" it's specified
 set ignorecase
 set smartcase
 
@@ -83,7 +86,7 @@ call pathogen#helptags()
 filetype on
 
 " Set supertab
-" let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
 " Pydoc
 let g:pydoc_cmd = "/usr/bin/pydoc"
@@ -96,6 +99,11 @@ map ,nt :NERDTreeToggle<CR>
 
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
+
+" Latex-suite settings
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 0
 
 " }}}
 
@@ -133,7 +141,8 @@ map j gj
 set tabstop=4
 set shiftwidth=4
 
-" Allow backspacing over indent, eol, and the start of insert
+" Allow backspacing over indent, eol, and the start of
+" insert
 set backspace=2
 " }}}
 
