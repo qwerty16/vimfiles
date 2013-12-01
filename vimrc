@@ -61,15 +61,20 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " there is only one window
 set laststatus=2
 
-" MacVim Settings
-" Disable macvim alt-movement mappings
-if has("gui_macvim")
-    let macvim_skip_cmd_opt_movement = 1
-    " Map swipe left and right to go through buffers
-    nmap <SwipeLeft> :bN<CR>
-    nmap <SwipeRight> :bn<CR>
-endif
+"Set up bundles
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype on
 
+" Set supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
+
+" Gundo toggle mapping
+map <F5> :GundoToggle<CR>
 " set the search scan to wrap lines
 set wrapscan
 
@@ -147,6 +152,37 @@ map ,nt :NERDTreeToggle<CR>
 
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
+" Make tabs, trailing whitespace, and non-breaking spaces visible
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+" Magically build interim directories if necessary
+
+function! AskQuit (msg, options, quit_option)
+    if confirm(a:msg, a:options) == a:quit_option
+        exit
+    endif
+endfunction
+
+function! EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
+             \ "&Create it\nor &Quit?", 2)
+
+        try
+            call mkdir( required_dir, 'p' )
+        catch
+            call AskQuit("Can't create '" . required_dir . "'",
+            \ "&Quit\nor &Continue anyway?", 1)
+        endtry
+    endif
+endfunction
+
+augroup AutoMkdir
+    autocmd!
+    autocmd BufNewFile * :call EnsureDirExists()
+augroup END
 
 " Latex-suite settings
 set grepprg=grep\ -nH\ $*
@@ -156,3 +192,9 @@ let g:Imap_UsePlaceHolders = 0
 " Autoswap_mac only works with setting below
 set title titlestring=
 " }}}
+
+"Scroll when 2 lines from top/bottom
+set scrolloff=2
+
+" Prevent entering ex mode
+nnoremap Q <nop>
