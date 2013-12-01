@@ -1,18 +1,20 @@
 " Set the colour scheme
 colorscheme desertEx
 
-" =====================================================
-" Folding
-" =====================================================
-" {{{
+" GUI settings
+set go-=T
+
+" Disable macvim alt-movement mappings
+if has("gui_macvim")
+    let macvim_skip_cmd_opt_movement = 1
+    " Map swipe left and right to go through buffers
+    nmap <SwipeLeft> :bN<CR>
+    nmap <SwipeRight> :bn<CR>
+endif
+
 " Set folding to indent style
 set foldmethod=marker
-" }}}
 
-" =====================================================
-" Status line settings
-" =====================================================
-" {{{
 " Show the current command in the lower right corner
 set showcmd
 
@@ -38,27 +40,7 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " tell VIM to always put a status line in, even if 
 " there is only one window
 set laststatus=2
-" }}}
 
-" =====================================================
-" MacVim Settings
-" =====================================================
-" {{{
-" Disable macvim alt-movement mappings
-if has("gui_macvim")
-    let macvim_skip_cmd_opt_movement = 1
-endif
-
-" Map swipe left and right to go through buffers
-nmap <SwipeLeft> :bN<CR>
-nmap <SwipeRight> :bn<CR>
-
-" }}}
-
-" =====================================================
-" Search settings
-" =====================================================
-" {{{
 " set the search scan to wrap lines
 set wrapscan
 
@@ -73,12 +55,7 @@ set hlsearch
 
 " Incrementally match the search
 set incsearch
-" }}}
 
-" =====================================================
-" Plugin settings
-" =====================================================
-" {{{
 "Set up bundles
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -105,22 +82,11 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Imap_UsePlaceHolders = 0
 
-" }}}
-
-" =====================================================
-" Spelling settings
-" =====================================================
-" {{{
 " Set spellcheck language to en
 " and spellcheck off
 set spell spelllang=en
 set nospell
-" }}}
 
-" =====================================================
-" 'Hidden' settings
-" =====================================================
-" {{{
 " get rid of the silly characters in window separators
 set fillchars=""
 
@@ -144,12 +110,7 @@ set shiftwidth=4
 " Allow backspacing over indent, eol, and the start of
 " insert
 set backspace=2
-" }}}
 
-" =====================================================
-" Filetype and syntax settings
-" =====================================================
-" {{{
 " Set filetype stuff to on
 filetype on
 filetype plugin on
@@ -157,12 +118,7 @@ filetype indent on
 
 " Switch on syntax highlighting.
 syntax on
-" }}}
 
-" =====================================================
-" Misc settings
-" =====================================================
-" {{{
 " Always have line numbers
 set number
 
@@ -174,4 +130,45 @@ set comments=sl:/*://:#
 
 " Set the textwidth to be 72 chars
 set textwidth=72
-" }}}
+
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+" Make tabs, trailing whitespace, and non-breaking spaces visible
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+" Magically build interim directories if necessary
+
+function! AskQuit (msg, options, quit_option)
+    if confirm(a:msg, a:options) == a:quit_option
+        exit
+    endif
+endfunction
+
+function! EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
+             \ "&Create it\nor &Quit?", 2)
+
+        try
+            call mkdir( required_dir, 'p' )
+        catch
+            call AskQuit("Can't create '" . required_dir . "'",
+            \ "&Quit\nor &Continue anyway?", 1)
+        endtry
+    endif
+endfunction
+
+augroup AutoMkdir
+    autocmd!
+    autocmd BufNewFile * :call EnsureDirExists()
+augroup END
+
+"Scroll when 2 lines from top/bottom
+set scrolloff=2
+
+" Prevent entering ex mode
+nnoremap Q <nop>

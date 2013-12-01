@@ -1,18 +1,21 @@
 " Set the colour scheme
 colorscheme default
 
-" =====================================================
-" Folding
-" =====================================================
-" {{{
+" Always have line numbers
+set number
+
+" Keep some stuff in the history
+set history=100
+
+" These things start comment lines
+set comments=sl:/*://:#
+
+" Set the textwidth to be 72 chars
+set textwidth=72
+
 " Set folding to indent style
 set foldmethod=marker
-" }}}
 
-" =====================================================
-" Status line settings
-" =====================================================
-" {{{
 " Show the current command in the lower right corner
 set showcmd
 
@@ -38,26 +41,16 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " tell VIM to always put a status line in, even if 
 " there is only one window
 set laststatus=2
-" }}}
 
-" =====================================================
 " MacVim Settings
-" =====================================================
-" {{{
 " Disable macvim alt-movement mappings
 if has("gui_macvim")
     let macvim_skip_cmd_opt_movement = 1
+    " Map swipe left and right to go through buffers
+    nmap <SwipeLeft> :bN<CR>
+    nmap <SwipeRight> :bn<CR>
 endif
 
-" Map swipe left and right to go through buffers
-nmap <SwipeLeft> :bN<CR>
-nmap <SwipeRight> :bn<CR>
-" }}}
-
-" =====================================================
-" Search settings
-" =====================================================
-" {{{
 " set the search scan to wrap lines
 set wrapscan
 
@@ -72,6 +65,43 @@ set hlsearch
 
 " Incrementally match the search
 set incsearch
+
+" Set spellcheck language to en
+" and spellcheck off
+set spell spelllang=en
+set nospell
+
+" Set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
+
+" Switch on syntax highlighting.
+syntax on
+
+" get rid of the silly characters in window separators
+set fillchars=""
+
+" Turn tabs into spaces
+set expandtab
+
+" Allow the cursor to go in to "invalid" places
+set virtualedit=all
+
+" Allows switching buffers without saving
+set hidden
+
+" Set movement to always be in screen lines
+map k gk
+map j gj
+
+" Tabstops are 4 spaces
+set tabstop=4
+set shiftwidth=4
+
+" Allow backspacing over indent, eol, and the start of
+" insert
+set backspace=2
 " }}}
 
 " =====================================================
@@ -104,73 +134,6 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Imap_UsePlaceHolders = 0
 
-" }}}
-
-" =====================================================
-" Spelling settings
-" =====================================================
-" {{{
-" Set spellcheck language to en
-" and spellcheck off
-set spell spelllang=en
-set nospell
-" }}}
-
-" =====================================================
-" 'Hidden' settings
-" =====================================================
-" {{{
-" get rid of the silly characters in window separators
-set fillchars=""
-
-" Turn tabs into spaces
-set expandtab
-
-" Allow the cursor to go in to "invalid" places
-set virtualedit=all
-
-" Allows switching buffers without saving
-set hidden
-
-" Set movement to always be in screen lines
-map k gk
-map j gj
-
-" Tabstops are 4 spaces
-set tabstop=4
-set shiftwidth=4
-
-" Allow backspacing over indent, eol, and the start of
-" insert
-set backspace=2
-" }}}
-
-" =====================================================
-" Filetype and syntax settings
-" =====================================================
-" {{{
-" Set filetype stuff to on
-filetype on
-filetype plugin on
-filetype indent on
-
-" Switch on syntax highlighting.
-syntax on
-" }}}
-
-" =====================================================
-" Misc settings
-" =====================================================
-" {{{
-" Always have line numbers
-set number
-
-" Keep some stuff in the history
-set history=100
-
-" These things start comment lines
-set comments=sl:/*://:#
-
-" Set the textwidth to be 72 chars
-set textwidth=72
+" Autoswap_mac only works with setting below
+set title titlestring=
 " }}}
