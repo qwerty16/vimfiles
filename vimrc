@@ -1,3 +1,22 @@
+" Change leader key to ,
+let mapleader=","
+
+" Directories to ignore when searching
+" Misc
+set wildignore=*Calibre**,*.log,**.app**,*.iso,*.jar,*.cdxml,*.gnucash
+
+" library files
+set wildignore+=*Library/Caches*,*Library/Applica*,*Library/Cal*,*Library/Logs*
+
+" pics, pdfs, vids
+set wildignore+=*.jpg,*.png,*.eps,*.pdf,*.flv,*.avi
+
+" office files
+set wildignore+=*.doc,*.pages,*.numbers,*.exe,*.xls*
+
+" tex files
+set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
+
 " Set the colour scheme
 colorscheme default
 
