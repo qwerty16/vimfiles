@@ -61,23 +61,6 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " there is only one window
 set laststatus=2
 
-"Set up bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype on
-
-" Set supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
-
-" Gundo toggle mapping
-map <F5> :GundoToggle<CR>
-" set the search scan to wrap lines
-set wrapscan
-
 " set the search scan so that it ignores case when the
 " search is all lower case but recognizes uppercase if
 " it's specified
@@ -126,32 +109,13 @@ set shiftwidth=4
 " Allow backspacing over indent, eol, and the start of
 " insert
 set backspace=2
-" }}}
 
-" =====================================================
-" Plugin settings
-" =====================================================
-" {{{
-"Set up bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype on
+"Scroll when 2 lines from top/bottom
+set scrolloff=2
 
-" Set supertab
-" let g:SuperTabDefaultCompletionType = "context"
+" Prevent entering ex mode
+nnoremap Q <nop>
 
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
-
-" Gundo toggle mapping
-map <F5> :GundoToggle<CR>
-
-" NERD_tree settings
-map ,nt :NERDTreeToggle<CR>
-
-" SnipMate settings
-let g:snips_author='Rachel Armstrong'
 " Make tabs, trailing whitespace, and non-breaking spaces visible
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
@@ -184,6 +148,30 @@ augroup AutoMkdir
     autocmd BufNewFile * :call EnsureDirExists()
 augroup END
 
+" =====================================================
+" Plugin settings
+" =====================================================
+" {{{
+"Set up bundles
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype on
+
+" Set supertab
+" let g:SuperTabDefaultCompletionType = "context"
+
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
+
+" Gundo toggle mapping
+map <F5> :GundoToggle<CR>
+
+" NERD_tree settings
+map ,nt :NERDTreeToggle<CR>
+
+" SnipMate settings
+let g:snips_author='Rachel Armstrong'
 " Latex-suite settings
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
@@ -191,10 +179,22 @@ let g:Imap_UsePlaceHolders = 0
 
 " Autoswap_mac only works with setting below
 set title titlestring=
+
+"Set up bundles
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype on
+
+" Set supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
+
+" Gundo toggle mapping
+map <F5> :GundoToggle<CR>
+" set the search scan to wrap lines
+set wrapscan
+
 " }}}
-
-"Scroll when 2 lines from top/bottom
-set scrolloff=2
-
-" Prevent entering ex mode
-nnoremap Q <nop>
