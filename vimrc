@@ -18,7 +18,7 @@ set wildignore+=*.doc,*.pages,*.numbers,*.exe,*.xls*
 set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
 
 " Set the colour scheme
-colorscheme default
+colorscheme desertEx
 
 " Always have line numbers
 set number
@@ -179,22 +179,4 @@ let g:Imap_UsePlaceHolders = 0
 
 " Autoswap_mac only works with setting below
 set title titlestring=
-
-"Set up bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype on
-
-" Set supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
-
-" Gundo toggle mapping
-map <F5> :GundoToggle<CR>
-" set the search scan to wrap lines
-set wrapscan
-
 " }}}
