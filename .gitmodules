@@ -1,3 +1,7 @@
+[submodule "bundle/snipMate.vim"]
+    path = bundle/snipMate.vim
+    url = git@github.com:garbas/vim-snipmate.git
+
 [submodule "bundle/TaskList.vim"]
     path = bundle/TaskList.vim
     url = git://github.com/vim-scripts/TaskList.vim.git
@@ -70,4 +74,7 @@
 	url = git://github.com/Lokaltog/vim-easymotion.git
 [submodule "bundle/YouComplete/Me"]
 	path = bundle/YouComplete/Me
+	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
