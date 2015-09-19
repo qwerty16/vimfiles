@@ -17,9 +17,6 @@ set wildignore+=*.doc,*.pages,*.numbers,*.exe,*.xls*
 " tex files
 set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
 
-" Set the colour scheme
-colorscheme desertEx
-
 " Always have line numbers
 set number
 
@@ -120,63 +117,112 @@ nnoremap Q <nop>
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
-" Magically build interim directories if necessary
-
-function! AskQuit (msg, options, quit_option)
-    if confirm(a:msg, a:options) == a:quit_option
-        exit
-    endif
-endfunction
-
-function! EnsureDirExists ()
-    let required_dir = expand("%:h")
-    if !isdirectory(required_dir)
-        call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
-             \ "&Create it\nor &Quit?", 2)
-
-        try
-            call mkdir( required_dir, 'p' )
-        catch
-            call AskQuit("Can't create '" . required_dir . "'",
-            \ "&Quit\nor &Continue anyway?", 1)
-        endtry
-    endif
-endfunction
-
-augroup AutoMkdir
-    autocmd!
-    autocmd BufNewFile * :call EnsureDirExists()
-augroup END
-
 " =====================================================
 " Plugin settings
 " =====================================================
 " {{{
 "Set up bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+execute pathogen#infect()
 filetype on
-
-" Set supertab
-" let g:SuperTabDefaultCompletionType = "context"
 
 " Pydoc
 let g:pydoc_cmd = "/usr/bin/pydoc"
 
-" Gundo toggle mapping
-map <F5> :GundoToggle<CR>
-
-" NERD_tree settings
-map ,nt :NERDTreeToggle<CR>
-
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
+
 " Latex-suite settings
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Imap_UsePlaceHolders = 0
 
-" Autoswap_mac only works with setting below
-set title titlestring=
+" vim-airline
+" let g:airline#extensions#tabline#enables = 1
+if !has('gui_running')
+    set t_Co=256
+end
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+function! LightLineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return  ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+" Solarized
+set background=dark
+colorscheme solarized
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " }}}
