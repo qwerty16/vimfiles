@@ -42,21 +42,9 @@
     path = pathogen
     url = git://github.com/tpope/vim-pathogen.git
 
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
-
-[submodule "bundle/Haskell-Conceal"]
-	path = bundle/Haskell-Conceal
-	url = git://github.com/vim-scripts/Haskell-Conceal.git
-
 [submodule "bundle/TaskList"]
 	path = bundle/TaskList
 	url = git://github.com/vim-scripts/TaskList.vim.git
-
-[submodule "bundle/cute-python"]
-	path = bundle/cute-python
-	url = git://github.com/ehamberg/vim-cute-python.git
 
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
