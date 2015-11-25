@@ -61,10 +61,6 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " there is only one window
 set laststatus=2
 
-" =====================================================
-" Search settings
-" =====================================================
-" {{{
 " set the search scan to wrap lines
 set wrapscan
 
@@ -80,20 +76,11 @@ set hlsearch
 " Incrementally match the search
 set incsearch
 
-" SnipMate settings
-let g:snips_author='Rachel Armstrong'
-
 " Latex-suite settings
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Imap_UsePlaceHolders = 0
 
-" }}}
-
-" =====================================================
-" Spelling settings
-" =====================================================
-" {{{
 " Set spellcheck language to en
 " and spellcheck off
 set spell spelllang=en
@@ -141,10 +128,6 @@ nnoremap Q <nop>
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
-" =====================================================
-" Plugin settings
-" =====================================================
-" {{{
 "Set up bundles
 execute pathogen#infect()
 filetype on
@@ -249,4 +232,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" }}}
+
+" ctrlp settings
+set runtimepath^=~/.vim/bundle/ctrlp.vim
