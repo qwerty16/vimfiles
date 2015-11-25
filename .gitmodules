@@ -25,12 +25,12 @@
 [submodule "bundle/airline"]
 	path = bundle/airline
 	url = git@github.com:bling/vim-airline.git
-[submodule "bundle/solarized"]
-	path = bundle/solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
 [submodule "bundle/flake8"]
 	path = bundle/flake8
 	url = git@github.com:nvie/vim-flake8.git
 [submodule "bundle/snipMate"]
 	path = bundle/snipMate
 	url = git@github.com:vim-scripts/snipMate.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

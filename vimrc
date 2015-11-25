@@ -1,3 +1,8 @@
+"Set up bundles
+execute pathogen#infect()
+Helptags
+filetype on
+
 " Set the colour scheme
 colorscheme default
 
@@ -128,10 +133,6 @@ nnoremap Q <nop>
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
-"Set up bundles
-execute pathogen#infect()
-filetype on
-
 " Pydoc
 let g:pydoc_cmd = "/usr/bin/pydoc"
 
@@ -161,12 +162,6 @@ let g:lightline = {
       \   'fileformat': 'LightLineFileformat',
       \   'filetype': 'LightLineFiletype',
       \   'fileencoding': 'LightLineFileencoding',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
       \ },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
@@ -210,28 +205,9 @@ function! LightLineFileencoding()
   return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
 " Solarized
 set background=dark
 colorscheme solarized
-
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " ctrlp settings
 set runtimepath^=~/.vim/bundle/ctrlp.vim
