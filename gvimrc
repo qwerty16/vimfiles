@@ -1,6 +1,7 @@
-" Set the colour scheme
-colorscheme desertEx
+" GUI settings
+set go-=T
 
+<<<<<<< HEAD
 " =====================================================
 " Folding
 " =====================================================
@@ -41,14 +42,18 @@ set laststatus=2
 " }}}
 
 " =====================================================
+=======
+>>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 " MacVim Settings
-" =====================================================
-" {{{
 " Disable macvim alt-movement mappings
 if has("gui_macvim")
     let macvim_skip_cmd_opt_movement = 1
+    " Map swipe left and right to go through buffers
+    nmap <SwipeLeft> :bN<CR>
+    nmap <SwipeRight> :bn<CR>
 endif
 
+<<<<<<< HEAD
 " Map swipe left and right to go through buffers
 nmap <SwipeLeft> :bN<CR>
 nmap <SwipeRight> :bn<CR>
@@ -175,3 +180,8 @@ set comments=sl:/*://:#
 " Set the textwidth to be 72 chars
 set textwidth=72
 " }}}
+=======
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+>>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8

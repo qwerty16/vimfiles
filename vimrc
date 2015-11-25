@@ -1,18 +1,42 @@
+<<<<<<< HEAD
 " Set the colour scheme
 colorscheme default
+=======
+" Change leader key to ,
+let mapleader=","
 
-" =====================================================
-" Folding
-" =====================================================
-" {{{
+" Directories to ignore when searching
+" Misc
+set wildignore=*Calibre**,*.log,**.app**,*.iso,*.jar,*.cdxml,*.gnucash
+
+" library files
+set wildignore+=*Library/Caches*,*Library/Applica*,*Library/Cal*,*Library/Logs*
+
+" pics, pdfs, vids
+set wildignore+=*.jpg,*.png,*.eps,*.pdf,*.flv,*.avi
+
+" office files
+set wildignore+=*.doc,*.pages,*.numbers,*.exe,*.xls*
+
+" tex files
+set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
+
+" Always have line numbers
+set number
+
+" Keep some stuff in the history
+set history=100
+
+" These things start comment lines
+set comments=sl:/*://:#
+
+" Set the textwidth to be 72 chars
+set textwidth=72
+>>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
+
 " Set folding to indent style
 set foldmethod=marker
-" }}}
 
-" =====================================================
-" Status line settings
-" =====================================================
-" {{{
 " Show the current command in the lower right corner
 set showcmd
 
@@ -38,22 +62,8 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " tell VIM to always put a status line in, even if 
 " there is only one window
 set laststatus=2
-" }}}
 
-" =====================================================
-" MacVim Settings
-" =====================================================
-" {{{
-" Disable macvim alt-movement mappings
-if has("gui_macvim")
-    let macvim_skip_cmd_opt_movement = 1
-endif
-
-" Map swipe left and right to go through buffers
-nmap <SwipeLeft> :bN<CR>
-nmap <SwipeRight> :bn<CR>
-" }}}
-
+<<<<<<< HEAD
 " =====================================================
 " Search settings
 " =====================================================
@@ -61,6 +71,8 @@ nmap <SwipeRight> :bn<CR>
 " set the search scan to wrap lines
 set wrapscan
 
+=======
+>>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 " set the search scan so that it ignores case when the
 " search is all lower case but recognizes uppercase if
 " it's specified
@@ -72,30 +84,8 @@ set hlsearch
 
 " Incrementally match the search
 set incsearch
-" }}}
 
-" =====================================================
-" Plugin settings
-" =====================================================
-" {{{
-"Set up bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype on
-
-" Set supertab
-" let g:SuperTabDefaultCompletionType = "context"
-
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
-
-" Gundo toggle mapping
-map <F5> :GundoToggle<CR>
-
-" NERD_tree settings
-map ,nt :NERDTreeToggle<CR>
-
+<<<<<<< HEAD
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
 
@@ -110,16 +100,21 @@ let g:Imap_UsePlaceHolders = 0
 " Spelling settings
 " =====================================================
 " {{{
+=======
+>>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 " Set spellcheck language to en
 " and spellcheck off
 set spell spelllang=en
 set nospell
-" }}}
 
-" =====================================================
-" 'Hidden' settings
-" =====================================================
-" {{{
+" Set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
+
+" Switch on syntax highlighting.
+syntax on
+
 " get rid of the silly characters in window separators
 set fillchars=""
 
@@ -143,34 +138,123 @@ set shiftwidth=4
 " Allow backspacing over indent, eol, and the start of
 " insert
 set backspace=2
-" }}}
+
+"Scroll when 2 lines from top/bottom
+set scrolloff=2
+
+" Prevent entering ex mode
+nnoremap Q <nop>
+
+" Make tabs, trailing whitespace, and non-breaking spaces visible
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 
 " =====================================================
-" Filetype and syntax settings
+" Plugin settings
 " =====================================================
 " {{{
-" Set filetype stuff to on
+"Set up bundles
+execute pathogen#infect()
 filetype on
-filetype plugin on
-filetype indent on
 
-" Switch on syntax highlighting.
-syntax on
-" }}}
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
 
-" =====================================================
-" Misc settings
-" =====================================================
-" {{{
-" Always have line numbers
-set number
+" SnipMate settings
+let g:snips_author='Rachel Armstrong'
 
-" Keep some stuff in the history
-set history=100
+" Latex-suite settings
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 0
 
-" These things start comment lines
-set comments=sl:/*://:#
+" vim-airline
+" let g:airline#extensions#tabline#enables = 1
+if !has('gui_running')
+    set t_Co=256
+end
 
-" Set the textwidth to be 72 chars
-set textwidth=72
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+function! LightLineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return  ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+" Solarized
+set background=dark
+colorscheme solarized
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " }}}

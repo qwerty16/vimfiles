@@ -1,6 +1,0 @@
-All plugins installed via pathogen/bundles
-
-To create a symlink to the vimrc and gvimrc run
-
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
