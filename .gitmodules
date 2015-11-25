@@ -1,0 +1,36 @@
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "bundle/AutoClose"]
+	path = bundle/AutoClose
+	url = git@github.com:vim-scripts/AutoClose.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/desertEx"]
+	path = bundle/desertEx
+	url = git://github.com/vim-scripts/desertEx.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/airline"]
+	path = bundle/airline
+	url = git@github.com:bling/vim-airline.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = git@github.com:nvie/vim-flake8.git
+[submodule "bundle/snipMate"]
+	path = bundle/snipMate
+	url = git@github.com:vim-scripts/snipMate.git

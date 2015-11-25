@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 " Set the colour scheme
 colorscheme default
-=======
+
 " Change leader key to ,
 let mapleader=","
 
@@ -32,7 +31,6 @@ set comments=sl:/*://:#
 
 " Set the textwidth to be 72 chars
 set textwidth=72
->>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 
 " Set folding to indent style
 set foldmethod=marker
@@ -63,7 +61,6 @@ set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 " there is only one window
 set laststatus=2
 
-<<<<<<< HEAD
 " =====================================================
 " Search settings
 " =====================================================
@@ -71,8 +68,6 @@ set laststatus=2
 " set the search scan to wrap lines
 set wrapscan
 
-=======
->>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 " set the search scan so that it ignores case when the
 " search is all lower case but recognizes uppercase if
 " it's specified
@@ -85,7 +80,6 @@ set hlsearch
 " Incrementally match the search
 set incsearch
 
-<<<<<<< HEAD
 " SnipMate settings
 let g:snips_author='Rachel Armstrong'
 
@@ -100,8 +94,6 @@ let g:Imap_UsePlaceHolders = 0
 " Spelling settings
 " =====================================================
 " {{{
-=======
->>>>>>> f6b9455062ee88ad335a75998f33f19d3cec4eb8
 " Set spellcheck language to en
 " and spellcheck off
 set spell spelllang=en
