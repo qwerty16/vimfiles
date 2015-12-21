@@ -70,7 +70,7 @@ set incsearch
 " {{{
 "Set up bundles
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 filetype on
 
