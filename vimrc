@@ -9,21 +9,10 @@ colorscheme default
 " Change leader key to ,
 let mapleader=","
 
-" Directories to ignore when searching
-" Misc
-set wildignore=*Calibre**,*.log,**.app**,*.iso,*.jar,*.cdxml,*.gnucash
-
-" library files
-set wildignore+=*Library/Caches*,*Library/Applica*,*Library/Cal*,*Library/Logs*
-
-" pics, pdfs, vids
-set wildignore+=*.jpg,*.png,*.eps,*.pdf,*.flv,*.avi
-
-" office files
-set wildignore+=*.doc,*.pages,*.numbers,*.exe,*.xls*
-
+" Files to ignore when searching
 " tex files
 set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
+set wildignore+=*/.git/*,*.pyc
 
 " Always have line numbers
 set number
