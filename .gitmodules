@@ -22,9 +22,6 @@
 [submodule "bundle/airline"]
 	path = bundle/airline
 	url = git@github.com:bling/vim-airline.git
-[submodule "bundle/flake8"]
-	path = bundle/flake8
-	url = git@github.com:nvie/vim-flake8.git
 [submodule "bundle/snipMate"]
 	path = bundle/snipMate
 	url = git@github.com:vim-scripts/snipMate.git
@@ -40,3 +37,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = git@github.com:nvie/vim-flake8.git

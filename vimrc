@@ -136,14 +136,6 @@ set list
 " Pydoc
 let g:pydoc_cmd = "/usr/bin/pydoc"
 
-" SnipMate settings
-let g:snips_author='Rachel Armstrong'
-
-" Latex-suite settings
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 0
-
 " vim-airline
 " let g:airline#extensions#tabline#enables = 1
 if !has('gui_running')
@@ -211,3 +203,6 @@ colorscheme solarized
 
 " ctrlp settings
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" flake8 run when write python file
+autocmd BufWritePost *.py call Flake8()
