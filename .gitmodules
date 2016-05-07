@@ -43,3 +43,6 @@
 [submodule "bundle/SimpylFold"]
 	path = bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "bundle/zenburn"]
+	path = bundle/zenburn
+	url = git@github.com:jnurmine/Zenburn.git
