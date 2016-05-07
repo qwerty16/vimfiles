@@ -1,3 +1,9 @@
+"Set up bundles
+filetype off
+call pathogen#infect()
+call pathogen#helptags()
+filetype on
+
 " GUI settings
 if has('gui_running')
     set background=dark
@@ -48,12 +54,6 @@ set hlsearch
 
 " Incrementally match the search
 set incsearch
-
-"Set up bundles
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-filetype on
 
 " Set supertab
 let g:SuperTabDefaultCompletionType = "context"
