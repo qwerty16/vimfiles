@@ -1,33 +1,11 @@
-"Set up bundles
-execute pathogen#infect()
-Helptags
-filetype on
-
-" Set the colour scheme
-colorscheme default
-
-" Change leader key to ,
-let mapleader=","
-
-" Files to ignore when searching
-" tex files
-set wildignore+=*.blg,*.bbl,*.aux,*.out,*.dvi,*.bst
-set wildignore+=*/.git/*,*.pyc
-
-" Always have line numbers
-set number
-
-" Keep some stuff in the history
-set history=100
-
-" These things start comment lines
-set comments=sl:/*://:#
-
-" Set the textwidth to be 72 chars
-set textwidth=72
-
-" Set folding to indent style
-set foldmethod=marker
+" GUI settings
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+    set go-=T
+else
+    colorscheme zenburn
+endif
 
 " Show the current command in the lower right corner
 set showcmd
@@ -51,10 +29,11 @@ set ch=2
 " %h shows help flag
 set stl=%f\ %y\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ %h
 
-" tell VIM to always put a status line in, even if 
+" tell VIM to always put a status line in, even if
 " there is only one window
 set laststatus=2
 
+" Search settings
 " set the search scan to wrap lines
 set wrapscan
 
@@ -70,26 +49,20 @@ set hlsearch
 " Incrementally match the search
 set incsearch
 
-" Latex-suite settings
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 0
-
-" Set spellcheck language to en
-" and spellcheck off
-set spell spelllang=en
-set nospell
-
-" Set filetype stuff to on
+"Set up bundles
+filetype off
+call pathogen#infect()
+call pathogen#helptags()
 filetype on
-filetype plugin on
-filetype indent on
 
-" Switch on syntax highlighting.
-syntax on
+" Set supertab
+let g:SuperTabDefaultCompletionType = "context"
 
-" get rid of the silly characters in window separators
-set fillchars=""
+" Pydoc
+let g:pydoc_cmd = "/usr/bin/pydoc"
+
+" Spelling settings
+set nospell
 
 " Turn tabs into spaces
 set expandtab
@@ -112,86 +85,22 @@ set shiftwidth=4
 " insert
 set backspace=2
 
-"Scroll when 2 lines from top/bottom
-set scrolloff=2
+" Set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
 
-" Prevent entering ex mode
-nnoremap Q <nop>
+" Switch on syntax highlighting.
+syntax on
 
-" Make tabs, trailing whitespace, and non-breaking spaces visible
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-set list
+" Always have line numbers
+set number
 
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
+" Keep some stuff in the history
+set history=100
 
-" vim-airline
-" let g:airline#extensions#tabline#enables = 1
-if !has('gui_running')
-    set t_Co=256
-end
+" These things start comment lines
+set comments=sl:/*://:#
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'filename': 'LightLineFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
-
-function! LightLineModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightLineFilename()
-  let fname = expand('%:t')
-  return  ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-" Solarized
-set background=dark
-colorscheme solarized
-
-" ctrlp settings
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" flake8 run when write python file
-autocmd BufWritePost *.py call Flake8()
+" Set the textwidth to be 72 chars
+set textwidth=80
