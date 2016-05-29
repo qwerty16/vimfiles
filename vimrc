@@ -58,9 +58,6 @@ set incsearch
 " Set supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" Pydoc
-let g:pydoc_cmd = "/usr/bin/pydoc"
-
 " Spelling settings
 set nospell
 
