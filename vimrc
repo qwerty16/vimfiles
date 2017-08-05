@@ -101,3 +101,8 @@ set comments=sl:/*://:#
 
 " Set the textwidth to be 72 chars
 set textwidth=80
+
+" Snipmate settings
+let g:snips_author = 'Rachel Armstrong'
+let g:snips_email = 'phunky83@gmail.com'
+let g:snips_github = 'https://github.com/qwerty16'
